@@ -1,6 +1,9 @@
 ![Repo Size](https://img.shields.io/github/repo-size/mihirth17/CampusQuest)
 ![Last Commit](https://img.shields.io/github/last-commit/mihirth17/CampusQuest)
 ![Top Language](https://img.shields.io/github/languages/top/mihirth17/CampusQuest)
+ 
+🔒 **License Notice**  
+This project is licensed under a custom MIT License. You are free to fork and modify this code, but you **must credit the author** (Mihir Thakkar), and **may not submit contributions or modify the original repository** without explicit permission.
 
 # 🚀 CampusQuest – College & Career Guidance System
 
