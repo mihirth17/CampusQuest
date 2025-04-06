@@ -1,4 +1,9 @@
+![Repo Size](https://img.shields.io/github/repo-size/mihirth17/CampusQuest)
+![Last Commit](https://img.shields.io/github/last-commit/mihirth17/CampusQuest)
+![Top Language](https://img.shields.io/github/languages/top/mihirth17/CampusQuest)
+
 # 🚀 CampusQuest – College & Career Guidance System
+
 
 CampusQuest is a dynamic full-stack platform built to empower students with **personalized college recommendations** based on their aptitude and academic performance. Designed with scalability and simplicity in mind, this system simulates a real-world student career portal and showcases full-cycle product thinking — from frontend UX to secure backend APIs.
 
