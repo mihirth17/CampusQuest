@@ -1,3 +1,4 @@
+[![Live App](https://img.shields.io/badge/Live%20App-%F0%9F%9A%80-green?style=for-the-badge)](https://mihirth17.github.io/CampusQuest/)
 ![Repo Size](https://img.shields.io/github/repo-size/mihirth17/CampusQuest)
 ![Last Commit](https://img.shields.io/github/last-commit/mihirth17/CampusQuest)
 ![Top Language](https://img.shields.io/github/languages/top/mihirth17/CampusQuest)
