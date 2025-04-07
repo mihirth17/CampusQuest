@@ -4,7 +4,7 @@ import useAuthGuard from "../hooks/useAuthGuard";
 import "./CareerPage.css";
 
 const streamOptions = ["Science", "Commerce", "Arts", "Any"];
-const courseOptions = ["B.Tech", "MBA", "B.Com", "B.Sc", "BA", "MBBS", "LLB", "BA LLB"];
+const courseOptions = ["B.Tech", "MBA", "B.Com", "B.Sc", "BA", "MBBS", "LLB", "BA LLB", "BCA"];
 
 const careerData = {
   "Science-B.Tech": {
@@ -21,6 +21,11 @@ const careerData = {
     options: "Lab Technician, Research Assistant, Scientist",
     job: ["Assistant", "Scientist", "Senior Scientist"],
     studies: ["M.Sc", "Research Lead", "Professor"],
+  },
+  "Science-BCA": {
+    options: "Software Developer, UI/UX Designer, QA Tester",
+    job: ["Junior Developer", "Frontend/Backend Engineer", "Tech Lead"],
+    studies: ["MCA", "M.Sc CS", "PhD in CS"],
   },
   "Commerce-B.Com": {
     options: "Accountant, Finance Executive, Banker",
@@ -51,6 +56,11 @@ const careerData = {
     options: "Advocate, Legal Consultant, Judicial Services",
     job: ["Junior Lawyer", "Legal Associate", "Senior Advocate"],
     studies: ["LLM", "Corporate Lawyer", "Legal Advisor"],
+  },
+  "Any-BCA": {
+    options: "IT Support, Software Testing, Web Development",
+    job: ["Tech Support", "QA Analyst", "Full Stack Developer"],
+    studies: ["MCA", "MBA (IT)", "System Architect"],
   },
 };
 
