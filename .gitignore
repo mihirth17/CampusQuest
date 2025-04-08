@@ -30,3 +30,6 @@ campusquest-frontend/.env
 # System files
 .DS_Store
 Thumbs.db
+
+# Root node_modules
+node_modules/
