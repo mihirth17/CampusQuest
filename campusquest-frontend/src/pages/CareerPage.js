@@ -1,4 +1,3 @@
-// 📁 src/pages/CareerPage.js
 import React, { useState } from "react";
 import useAuthGuard from "../hooks/useAuthGuard";
 import "./CareerPage.css";
@@ -23,9 +22,14 @@ const careerData = {
     studies: ["M.Sc", "Research Lead", "Professor"],
   },
   "Science-BCA": {
-    options: "Software Developer, UI/UX Designer, QA Tester",
-    job: ["Junior Developer", "Frontend/Backend Engineer", "Tech Lead"],
-    studies: ["MCA", "M.Sc CS", "PhD in CS"],
+    options: "Frontend Developer, Backend Engineer, UI/UX Designer",
+    job: ["Web Developer", "Software Engineer", "Tech Lead"],
+    studies: ["MCA", "Software Architect", "CTO"],
+  },
+  "Any-BCA": {
+    options: "Web Developer, Database Admin, IT Support",
+    job: ["Developer", "System Analyst", "Tech Manager"],
+    studies: ["MCA", "MBA IT", "Product Manager"],
   },
   "Commerce-B.Com": {
     options: "Accountant, Finance Executive, Banker",
@@ -56,11 +60,6 @@ const careerData = {
     options: "Advocate, Legal Consultant, Judicial Services",
     job: ["Junior Lawyer", "Legal Associate", "Senior Advocate"],
     studies: ["LLM", "Corporate Lawyer", "Legal Advisor"],
-  },
-  "Any-BCA": {
-    options: "IT Support, Software Testing, Web Development",
-    job: ["Tech Support", "QA Analyst", "Full Stack Developer"],
-    studies: ["MCA", "MBA (IT)", "System Architect"],
   },
 };
 

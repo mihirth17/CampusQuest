@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
-import { toast } from "react-toastify"; // ✅ Added toast
+import { toast } from "react-toastify";
 import useAuthGuard from "../hooks/useAuthGuard";
 import "./CollegesPage.css";
 
@@ -16,12 +16,15 @@ const CollegesPage = () => {
   const [stream, setStream] = useState("Any");
   const [course, setCourse] = useState("Any");
   const [loading, setLoading] = useState(false);
+  const [appliedLoading, setAppliedLoading] = useState(false);
   const [applied, setApplied] = useState([]);
 
   const token = localStorage.getItem("token");
   const username = localStorage.getItem("username");
 
+  // ✅ Fetch previously applied colleges
   const fetchApplied = useCallback(async () => {
+    setAppliedLoading(true);
     try {
       const res = await axios.get(`http://localhost:8000/applications/${username}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -29,10 +32,17 @@ const CollegesPage = () => {
       const appliedList = res.data.map((a) => a.college_name);
       setApplied(appliedList);
     } catch (err) {
-      toast.error("❌ Error fetching applied colleges");
+      // Show toast only for non-404 errors
+      if (err.response && err.response.status !== 404) {
+        toast.error("❌ Error fetching applied colleges");
+      }
+      setApplied([]); // Ensure it's reset even on failure
+    } finally {
+      setAppliedLoading(false);
     }
   }, [username, token]);
 
+  // ✅ Fetch colleges based on filters
   const fetchColleges = useCallback(async () => {
     if (score > 15 || percentage > 100) {
       toast.warn("⚠️ Score or percentage exceeds allowed maximum.");
@@ -58,6 +68,7 @@ const CollegesPage = () => {
     }
   }, [score, percentage, stream, course, token]);
 
+  // ✅ Track applied college
   const handleApply = async (collegeName) => {
     try {
       await axios.post(
@@ -121,7 +132,7 @@ const CollegesPage = () => {
         🎯 Tip: Aptitude Score must be between 0-15 and Percentage between 0-100.
       </p>
 
-      {loading ? (
+      {loading || appliedLoading ? (
         <p>Loading colleges...</p>
       ) : colleges.length > 0 ? (
         <>
