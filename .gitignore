@@ -1,10 +1,32 @@
+# Python (FastAPI backend)
 venv/
 __pycache__/
+*.py[cod]
+*.pyo
+*.pyd
 *.pyc
+*.pdb
 .env
-campusquest-frontend/node_modules/
+.env.*
+
+# FastAPI logs and coverage
 *.log
+*.sqlite3
+coverage/
+htmlcov/
+*.coverage
+*.egg-info/
+
+# Node.js (React frontend)
+campusquest-frontend/node_modules/
+campusquest-frontend/build/
+campusquest-frontend/dist/
+campusquest-frontend/.env
+
+# IDEs and editors
 .vscode/
 .idea/
+
+# System files
 .DS_Store
 Thumbs.db
