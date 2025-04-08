@@ -1,10 +1,9 @@
-// 📁 src/pages/CareerPage.js
 import React, { useState } from "react";
 import useAuthGuard from "../hooks/useAuthGuard";
 import "./CareerPage.css";
 
 const streamOptions = ["Science", "Commerce", "Arts", "Any"];
-const courseOptions = ["B.Tech", "MBA", "B.Com", "B.Sc", "BA", "MBBS", "LLB", "BA LLB"];
+const courseOptions = ["B.Tech", "MBA", "B.Com", "B.Sc", "BA", "MBBS", "LLB", "BA LLB", "BCA"];
 
 const careerData = {
   "Science-B.Tech": {
@@ -21,6 +20,16 @@ const careerData = {
     options: "Lab Technician, Research Assistant, Scientist",
     job: ["Assistant", "Scientist", "Senior Scientist"],
     studies: ["M.Sc", "Research Lead", "Professor"],
+  },
+  "Science-BCA": {
+    options: "Frontend Developer, Backend Engineer, UI/UX Designer",
+    job: ["Web Developer", "Software Engineer", "Tech Lead"],
+    studies: ["MCA", "Software Architect", "CTO"],
+  },
+  "Any-BCA": {
+    options: "Web Developer, Database Admin, IT Support",
+    job: ["Developer", "System Analyst", "Tech Manager"],
+    studies: ["MCA", "MBA IT", "Product Manager"],
   },
   "Commerce-B.Com": {
     options: "Accountant, Finance Executive, Banker",
