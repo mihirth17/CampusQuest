@@ -1,8 +1,14 @@
+import os
+from dotenv import load_dotenv
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from . import routes, admin_routes
 from .database import engine
 from . import models
+
+# ✅ Load environment variables
+load_dotenv()
 
 # ✅ Create DB tables
 models.Base.metadata.create_all(bind=engine)
@@ -17,7 +23,7 @@ app = FastAPI(
 # ✅ Enable CORS for frontend integration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Replace with ["http://localhost:3000"] in production
+    allow_origins=["*"],  # Replace with ["https://mihirth17.github.io"] in production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
