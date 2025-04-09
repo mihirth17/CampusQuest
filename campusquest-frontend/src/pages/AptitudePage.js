@@ -27,7 +27,7 @@ const AptitudePage = () => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const res = await fetch("/aptitude_questions.txt");
+        const res = await fetch(process.env.PUBLIC_URL + "/aptitude_questions.txt");
         const text = await res.text();
         const parsed = parseQuestionsFromText(text);
 
