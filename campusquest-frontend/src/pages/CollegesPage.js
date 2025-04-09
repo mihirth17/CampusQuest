@@ -21,7 +21,6 @@ const CollegesPage = () => {
 
   const token = localStorage.getItem("token");
   const username = localStorage.getItem("username");
-
   const API_BASE = process.env.REACT_APP_API_BASE_URL;
 
   // ✅ Fetch previously applied colleges
@@ -34,8 +33,8 @@ const CollegesPage = () => {
       const appliedList = res.data.map((a) => a.college_name);
       setApplied(appliedList);
     } catch (err) {
-      if (err.response && err.response.status !== 404) {
-        toast.error("❌ Error fetching applied colleges");
+      if (err.response?.status !== 404) {
+        toast.error("❌ Failed to fetch applied colleges.");
       }
       setApplied([]);
     } finally {
@@ -45,8 +44,11 @@ const CollegesPage = () => {
 
   // ✅ Fetch colleges based on filters
   const fetchColleges = useCallback(async () => {
-    if (score > 15 || percentage > 100) {
-      toast.warn("⚠️ Score or percentage exceeds allowed maximum.");
+    const scoreInt = parseInt(score);
+    const percentageFloat = parseFloat(percentage);
+
+    if (scoreInt > 15 || percentageFloat > 100) {
+      toast.warn("⚠️ Score or percentage exceeds the allowed maximum.");
       return;
     }
 
@@ -54,16 +56,16 @@ const CollegesPage = () => {
       setLoading(true);
       const res = await axios.get(`${API_BASE}/colleges`, {
         params: {
-          score: parseInt(score),
-          percentage: parseFloat(percentage),
+          score: scoreInt,
+          percentage: percentageFloat,
           stream,
           course,
         },
         headers: { Authorization: `Bearer ${token}` },
       });
       setColleges(res.data);
-    } catch (err) {
-      toast.error("❌ Error fetching colleges");
+    } catch {
+      toast.error("❌ Failed to fetch colleges.");
     } finally {
       setLoading(false);
     }
@@ -79,8 +81,8 @@ const CollegesPage = () => {
       );
       setApplied([...applied, collegeName]);
       toast.success("✅ Application tracked successfully!");
-    } catch (err) {
-      toast.error("❌ Error tracking application.");
+    } catch {
+      toast.error("❌ Failed to track application.");
     }
   };
 

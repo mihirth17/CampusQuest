@@ -26,7 +26,15 @@ const RegisterPage = () => {
       toast.success("✅ Registered successfully! Please log in.");
       navigate("/login");
     } catch (err) {
-      toast.error("❌ " + (err.response?.data?.detail || "Registration failed"));
+      const detail = err.response?.data?.detail;
+      const errorMsg =
+        typeof detail === "string"
+          ? detail
+          : Array.isArray(detail)
+          ? detail[0]?.msg || "Invalid data"
+          : err.message || "❌ Registration failed";
+
+      toast.error("❌ " + errorMsg);
     }
   };
 

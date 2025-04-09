@@ -10,7 +10,10 @@ const ApplyPage = () => {
   const handleApply = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${API}/apply`, { username, college_id: parseInt(collegeId) });
+      await axios.post(`${API}/apply`, {
+        username,
+        college_id: parseInt(collegeId),
+      });
       alert("Applied successfully!");
     } catch (err) {
       alert("Application failed: " + (err.response?.data?.detail || "Error"));

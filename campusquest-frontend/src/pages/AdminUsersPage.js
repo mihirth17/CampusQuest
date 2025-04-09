@@ -36,7 +36,7 @@ const AdminUsersPage = () => {
       });
       setUsers(res.data);
     } catch {
-      toast.error("❌ Failed to load users.");
+      toast.error("Failed to load users.");
     }
   };
 
@@ -47,7 +47,7 @@ const AdminUsersPage = () => {
       });
       setApplications(res.data);
     } catch {
-      toast.error("❌ Failed to load applications.");
+      toast.error("Failed to load applications.");
     }
   };
 
@@ -58,13 +58,13 @@ const AdminUsersPage = () => {
       });
       setScores(res.data);
     } catch {
-      toast.error("❌ Failed to load scores.");
+      toast.error("Failed to load scores.");
     }
   };
 
   const handleDelete = (username) => {
     confirmAlert({
-      title: "⚠️ Confirm Deletion",
+      title: "Confirm Deletion",
       message: `Are you sure you want to delete '${username}'?`,
       buttons: [
         {
@@ -74,16 +74,16 @@ const AdminUsersPage = () => {
               await axios.delete(`${API}/admin/users/${username}`, {
                 headers: { Authorization: `Bearer ${token}` },
               });
-              toast.success(`✅ Deleted user '${username}'`);
+              toast.success(`Deleted user '${username}'`);
               setUsers((prev) => prev.filter((u) => u.username !== username));
             } catch (err) {
-              toast.error("❌ " + (err.response?.data?.detail || "Failed to delete user"));
+              toast.error(err.response?.data?.detail || "Failed to delete user");
             }
           },
         },
         {
           label: "Cancel",
-          onClick: () => toast.info("❎ Deletion cancelled."),
+          onClick: () => toast.info("Deletion cancelled."),
         },
       ],
     });
@@ -91,7 +91,7 @@ const AdminUsersPage = () => {
 
   const handleLogout = () => {
     localStorage.clear();
-    toast.info("👋 Logged out as admin.");
+    toast.info("Logged out as admin.");
     navigate("/");
   };
 
@@ -99,13 +99,12 @@ const AdminUsersPage = () => {
     fetchUsers();
     fetchApplications();
     fetchScores();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div className="admin-wrapper">
       <div className="admin-header">
-        <h2>🛠️ Admin Dashboard</h2>
+        <h2>Admin Dashboard</h2>
         <button className="logout-admin-btn" onClick={handleLogout}>Logout</button>
       </div>
 
@@ -117,7 +116,7 @@ const AdminUsersPage = () => {
 
       {activeTab === "users" && (
         <div className="tab-panel">
-          <h3>👥 All Users</h3>
+          <h3>All Users</h3>
           {users.length === 0 ? (
             <p>No users found.</p>
           ) : (
@@ -160,7 +159,7 @@ const AdminUsersPage = () => {
 
       {activeTab === "applications" && (
         <div className="tab-panel">
-          <h3>📋 All Applications</h3>
+          <h3>All Applications</h3>
           {applications.length === 0 ? (
             <p>No applications found.</p>
           ) : (
@@ -188,7 +187,7 @@ const AdminUsersPage = () => {
 
       {activeTab === "scores" && (
         <div className="tab-panel">
-          <h3>🧠 Aptitude Scores</h3>
+          <h3>Aptitude Scores</h3>
           {scores.length === 0 ? (
             <p>No scores found.</p>
           ) : (
