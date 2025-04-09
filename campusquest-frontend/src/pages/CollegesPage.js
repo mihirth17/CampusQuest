@@ -22,7 +22,7 @@ const CollegesPage = () => {
   const token = localStorage.getItem("token");
   const username = localStorage.getItem("username");
 
-  const API_BASE = process.env.REACT_APP_API_URL;
+  const API_BASE = process.env.REACT_APP_API_BASE_URL;
 
   // ✅ Fetch previously applied colleges
   const fetchApplied = useCallback(async () => {
