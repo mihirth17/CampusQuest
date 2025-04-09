@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import "../pages/AdminUsersPage.css";
 
+const API = process.env.REACT_APP_API_BASE_URL;
+
 const AdminUsersPage = () => {
   const [activeTab, setActiveTab] = useState("users");
   const [users, setUsers] = useState([]);
@@ -29,7 +31,7 @@ const AdminUsersPage = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/admin/users", {
+      const res = await axios.get(`${API}/admin/users`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUsers(res.data);
@@ -40,7 +42,7 @@ const AdminUsersPage = () => {
 
   const fetchApplications = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/admin/applications", {
+      const res = await axios.get(`${API}/admin/applications`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setApplications(res.data);
@@ -51,7 +53,7 @@ const AdminUsersPage = () => {
 
   const fetchScores = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/admin/scores", {
+      const res = await axios.get(`${API}/admin/scores`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setScores(res.data);
@@ -69,7 +71,7 @@ const AdminUsersPage = () => {
           label: "Yes",
           onClick: async () => {
             try {
-              await axios.delete(`http://localhost:8000/admin/users/${username}`, {
+              await axios.delete(`${API}/admin/users/${username}`, {
                 headers: { Authorization: `Bearer ${token}` },
               });
               toast.success(`✅ Deleted user '${username}'`);

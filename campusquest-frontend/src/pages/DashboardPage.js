@@ -1,4 +1,3 @@
-// 📁 src/pages/DashboardPage.js
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import useAuthGuard from "../hooks/useAuthGuard";
@@ -11,8 +10,8 @@ const DashboardPage = () => {
 
   const handleLogout = () => {
     localStorage.clear();
-    sessionStorage.setItem("justLoggedOut", "true"); // 👈 Only set flag
-    navigate("/"); // 👈 Redirect to home
+    sessionStorage.setItem("justLoggedOut", "true");
+    navigate("/");
   };
 
   return (

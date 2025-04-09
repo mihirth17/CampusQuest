@@ -22,25 +22,26 @@ const CollegesPage = () => {
   const token = localStorage.getItem("token");
   const username = localStorage.getItem("username");
 
+  const API_BASE = process.env.REACT_APP_API_URL;
+
   // ✅ Fetch previously applied colleges
   const fetchApplied = useCallback(async () => {
     setAppliedLoading(true);
     try {
-      const res = await axios.get(`http://localhost:8000/applications/${username}`, {
+      const res = await axios.get(`${API_BASE}/applications/${username}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const appliedList = res.data.map((a) => a.college_name);
       setApplied(appliedList);
     } catch (err) {
-      // Show toast only for non-404 errors
       if (err.response && err.response.status !== 404) {
         toast.error("❌ Error fetching applied colleges");
       }
-      setApplied([]); // Ensure it's reset even on failure
+      setApplied([]);
     } finally {
       setAppliedLoading(false);
     }
-  }, [username, token]);
+  }, [username, token, API_BASE]);
 
   // ✅ Fetch colleges based on filters
   const fetchColleges = useCallback(async () => {
@@ -51,7 +52,7 @@ const CollegesPage = () => {
 
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:8000/colleges", {
+      const res = await axios.get(`${API_BASE}/colleges`, {
         params: {
           score: parseInt(score),
           percentage: parseFloat(percentage),
@@ -66,13 +67,13 @@ const CollegesPage = () => {
     } finally {
       setLoading(false);
     }
-  }, [score, percentage, stream, course, token]);
+  }, [score, percentage, stream, course, token, API_BASE]);
 
   // ✅ Track applied college
   const handleApply = async (collegeName) => {
     try {
       await axios.post(
-        "http://localhost:8000/apply",
+        `${API_BASE}/apply`,
         { username, college_name: collegeName },
         { headers: { Authorization: `Bearer ${token}` } }
       );
