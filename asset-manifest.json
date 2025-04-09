@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/CampusQuest/static/css/main.f59981bd.css",
-    "main.js": "/CampusQuest/static/js/main.ae502a42.js",
+    "main.js": "/CampusQuest/static/js/main.ecd294b5.js",
     "static/media/campusquest-logo.png": "/CampusQuest/static/media/campusquest-logo.fc576962fc84a7a44a66.png",
     "index.html": "/CampusQuest/index.html",
     "main.f59981bd.css.map": "/CampusQuest/static/css/main.f59981bd.css.map",
-    "main.ae502a42.js.map": "/CampusQuest/static/js/main.ae502a42.js.map"
+    "main.ecd294b5.js.map": "/CampusQuest/static/js/main.ecd294b5.js.map"
   },
   "entrypoints": [
     "static/css/main.f59981bd.css",
-    "static/js/main.ae502a42.js"
+    "static/js/main.ecd294b5.js"
   ]
 }
