@@ -8,16 +8,16 @@ export function parseQuestionsFromText(text) {
 
     for (let j = 1; j <= 4; j++) {
       const line = lines[i + j];
-      const label = line?.[0]; // A, B, C, D
-      const text = line?.slice(2)?.trim(); // after 'A. '
+      const label = line?.[0]; // a, b, c, d
+      const text = line?.slice(3)?.trim(); // ✅ skip "a. " (3 chars)
       if (label && text) {
         options.push({ label, text });
       }
     }
 
-    const answer = lines[i + 5]?.trim().toUpperCase();
+    const answerLine = lines[i + 5]?.trim();
+    const answer = answerLine?.split(":")[1]?.trim()?.toLowerCase(); // accepts "Answer: b"
 
-    // Push only if everything is valid
     if (question && options.length === 4 && answer) {
       questions.push({ question, options, answer });
     }
