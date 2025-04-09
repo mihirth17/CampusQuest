@@ -6,7 +6,7 @@ import "./ApplicationsPage.css";
 const API = process.env.REACT_APP_API_BASE_URL;
 
 const ApplicationsPage = () => {
-  useAuthGuard(); // 🔐 Session protection
+  useAuthGuard();
 
   const [applications, setApplications] = useState([]);
   const username = localStorage.getItem("username");
@@ -19,8 +19,8 @@ const ApplicationsPage = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
         setApplications(res.data);
-      } catch (err) {
-        alert("❌ Failed to fetch applications");
+      } catch {
+        alert("Failed to fetch applications.");
       }
     };
 
@@ -29,7 +29,7 @@ const ApplicationsPage = () => {
 
   return (
     <div className="applications-container">
-      <h2>📋 Tracked College Applications</h2>
+      <h2>Tracked College Applications</h2>
       {applications.length === 0 ? (
         <p className="empty-msg">No applications tracked yet.</p>
       ) : (

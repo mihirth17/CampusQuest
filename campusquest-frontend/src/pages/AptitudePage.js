@@ -30,10 +30,11 @@ const AptitudePage = () => {
         const res = await fetch("/aptitude_questions.txt");
         const text = await res.text();
         const parsed = parseQuestionsFromText(text);
+
         if (!parsed.length) throw new Error("No questions parsed");
         setQuestions(parsed);
       } catch {
-        toast.error("⚠️ Failed to load questions.");
+        toast.error("⚠️ Failed to load aptitude questions. Please try again later.");
       }
     };
     fetchQuestions();
@@ -68,7 +69,6 @@ const AptitudePage = () => {
         })
         .catch((err) => {
           const errorMsg = err.response?.data?.detail || err.message;
-          console.error("❌ Submission error:", errorMsg);
           toast.error(`❌ Failed to submit your score: ${errorMsg}`);
         });
     }
