@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+const API = process.env.REACT_APP_API_BASE_URL;
+
 const ApplyPage = () => {
   const [collegeId, setCollegeId] = useState("");
   const username = localStorage.getItem("username");
@@ -8,7 +10,7 @@ const ApplyPage = () => {
   const handleApply = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8000/apply", { username, college_id: parseInt(collegeId) });
+      await axios.post(`${API}/apply`, { username, college_id: parseInt(collegeId) });
       alert("Applied successfully!");
     } catch (err) {
       alert("Application failed: " + (err.response?.data?.detail || "Error"));
@@ -19,7 +21,13 @@ const ApplyPage = () => {
     <div className="login-wrapper">
       <form onSubmit={handleApply} className="login-form">
         <h2>Apply to College</h2>
-        <input type="text" placeholder="College ID" value={collegeId} onChange={(e) => setCollegeId(e.target.value)} required />
+        <input
+          type="text"
+          placeholder="College ID"
+          value={collegeId}
+          onChange={(e) => setCollegeId(e.target.value)}
+          required
+        />
         <button type="submit">Apply</button>
       </form>
     </div>

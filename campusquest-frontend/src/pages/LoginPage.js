@@ -1,4 +1,3 @@
-// 📁 src/pages/LoginPage.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -31,9 +30,13 @@ const LoginPage = () => {
     formData.append("password", password);
 
     try {
-      const res = await axios.post("http://localhost:8000/admin/login", formData, {
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      });
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_BASE_URL}/admin/login`,
+        formData,
+        {
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        }
+      );
 
       const { access_token, role } = res.data;
 

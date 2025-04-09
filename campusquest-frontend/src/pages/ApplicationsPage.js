@@ -3,6 +3,8 @@ import axios from "axios";
 import useAuthGuard from "../hooks/useAuthGuard";
 import "./ApplicationsPage.css";
 
+const API = process.env.REACT_APP_API_BASE_URL;
+
 const ApplicationsPage = () => {
   useAuthGuard(); // 🔐 Session protection
 
@@ -13,7 +15,7 @@ const ApplicationsPage = () => {
   useEffect(() => {
     const fetchApplications = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/applications/${username}`, {
+        const res = await axios.get(`${API}/applications/${username}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setApplications(res.data);
@@ -23,7 +25,7 @@ const ApplicationsPage = () => {
     };
 
     fetchApplications();
-  }, [username, token]); // ✅ Clean dependency
+  }, [username, token]);
 
   return (
     <div className="applications-container">

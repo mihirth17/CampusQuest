@@ -6,6 +6,8 @@ import { parseQuestionsFromText } from "../utils/parseQuestions";
 import useAuthGuard from "../hooks/useAuthGuard";
 import "./AptitudePage.css";
 
+const API = process.env.REACT_APP_API_BASE_URL;
+
 const AptitudePage = () => {
   useAuthGuard();
 
@@ -52,7 +54,7 @@ const AptitudePage = () => {
 
       axios
         .post(
-          "http://localhost:8000/aptitude",
+          `${API}/aptitude`,
           { username, score },
           {
             headers: {
@@ -61,7 +63,7 @@ const AptitudePage = () => {
             },
           }
         )
-        .then((res) => {
+        .then(() => {
           toast.success("✅ Score submitted successfully!");
         })
         .catch((err) => {

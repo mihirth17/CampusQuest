@@ -14,11 +14,14 @@ const RegisterPage = () => {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:8000/register", {
-        username,
-        email,
-        password,
-      });
+      await axios.post(
+        `${process.env.REACT_APP_API_BASE_URL}/register`,
+        {
+          username,
+          email,
+          password,
+        }
+      );
 
       toast.success("✅ Registered successfully! Please log in.");
       navigate("/login");
